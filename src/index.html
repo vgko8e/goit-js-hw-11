@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .letter {color: black;}</style>
     <title>Заголовок страницы</title>
     <link
       rel="stylesheet"
@@ -12,8 +14,28 @@
     />
   </head>
   <body>
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/example.html"></include>
+    <form class="search-form" id="search-form">
+      <input
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
+      <button type="submit" class="btn btn-search">Search</button>
+    </form>
+
+    <div class="gallery">
+      <!-- Картки зображень -->
+    </div>
+
+    <button type="button" class="load-more" data-action="load-more">
+    <span 
+      class="spinner-border spinner-border-sm spinner is-hidden"
+      role="status"
+      aria-hidden="true"
+    ></span>
+    <span class="label">Show more</span>
+  </button>
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
