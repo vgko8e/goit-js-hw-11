@@ -5,13 +5,13 @@ import LoadMoreBtn from './js/load-btn';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-const searchApiService = new SearchApiService();
-
 const refs = {
     searchForm: document.querySelector('#search-form'),
     searchBtn: document.querySelector('.btn-search'),
-    galleryItems: document.querySelector('.gallery'),
+    galleryItems: document.querySelector('.gallery'), 
 };
+
+const searchApiService = new SearchApiService();
 
 const loadMoreBtn = new LoadMoreBtn({
     selector: '[data-action="load-more"]',
@@ -72,9 +72,10 @@ async function fetchImage() {
     }
 };
 
+
 function loadMore() {
     fetchImage().then(data => {
-        if ((data.totalHits) / 40 < userRequest.page) {
+        if ((data.totalHits) / 40 < searchApiService.page) {
         Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.")
         loadMoreBtn.hide();
         }
